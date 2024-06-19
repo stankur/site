@@ -1,5 +1,6 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import path from "path";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,7 +15,11 @@ const config = {
 		adapter: adapter(),
 		paths: {
 			base: process.env.NODE_ENV === "production" ? "/site" : "",
-		}
+		},
+        alias: {
+            $compiler: path.resolve('./src/compiler'),
+            $lib: path.resolve('./src/lib')
+        }
 	},
 };
 

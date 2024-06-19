@@ -1,26 +1,26 @@
 <script lang="ts">
     import type { Node } from './SidebarTypes';
 
+    import { SidebarExpandStore } from '../../stores/SidebarExpandStore';
+
     import SidebarNode from './SidebarNode.svelte';
 
     export let node: Node;
-
-    let expanded = false;
 </script>
 
 <div>
     <div class="title-group">
-        <a class="title" href={node.url}>
+        <a class="title" href={`/${node.url}`}>
             <span>{node.title}</span>
         </a>
 
         {#if node.children.length}
-            <span class="toggle" on:click={() => expanded = !expanded} role="none">{expanded ? '-' : '+'}</span>
+            <span class="toggle" on:click={() => SidebarExpandStore.toggle(node.url)} role="none">{($SidebarExpandStore)[node.url] ? '-' : '+'}</span>
         {/if}
     </div>
 
 
-    {#if expanded && node.children.length}
+    {#if ($SidebarExpandStore)[node.url] && node.children.length}
         <div class="sidebar-node-children-container">
             {#each node.children as child (child.url)}
                 <SidebarNode node={child} />
