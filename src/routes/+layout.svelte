@@ -1,4 +1,5 @@
 <script lang="ts">
+    import "../app.css";
 	import Sidebar from "$lib/components/Sidebar/Sidebar.svelte";
 	import type { Node } from "$lib/components/Sidebar/SidebarTypes";
     import { SidebarExpandStore } from "$lib/stores/SidebarExpandStore";
@@ -28,7 +29,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
 	.container {
 		display: flex;
 	}

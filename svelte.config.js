@@ -19,7 +19,7 @@ const config = {
         alias: {
             $compiler: path.resolve('./src/compiler'),
             $lib: path.resolve('./src/lib')
-        }
+        },
 	},
 };
 
